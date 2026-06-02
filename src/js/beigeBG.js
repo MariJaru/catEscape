@@ -4,7 +4,7 @@ import {Resources} from './resources.js'
 export class BeigeBG extends Actor {
     constructor() {
         super()
-        this.graphics.use(Resources.beigeBG.toSprite())
+        this.graphics.use(Resources.BeigeBG.toSprite())
         this.pos = new Vector(400, 300)
     }
 }
