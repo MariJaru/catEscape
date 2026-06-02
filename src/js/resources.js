@@ -5,7 +5,8 @@ const Resources = {
     BeigeBG: new ImageSource('images/beigeBG.jpg'),
     FatCat: new ImageSource('images/fatCatRightSideview.png'),
     SkinnyCat: new ImageSource('images/skinnyCatSideview.png'),
-    Platform: new ImageSource('images/woodenPlatform.png')
+    Platform: new ImageSource('images/woodenPlatform.png'),
+    BigPlatform: new ImageSource('images/bigWoodenPlatform.png')
 }
 
 

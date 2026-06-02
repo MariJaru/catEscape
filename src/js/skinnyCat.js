@@ -19,7 +19,7 @@ export class SkinnyCat extends Actor {
 
     onInitialize(engine) {
         this.graphics.use(Resources.SkinnyCat.toSprite())
-        this.pos = new Vector(randomInRange(0, 1280), (randomInRange(0, 720)))
+        this.pos = new Vector(1130, 550);
         // this.on('collisionstart', (event) => this.hitSomething(event))
         // this.score = 0
         // this.health = 100

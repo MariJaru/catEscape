@@ -1,4 +1,4 @@
-import {Actor, Keys, randomInRange, Vector} from "excalibur";
+import {Actor, CollisionType, Keys, randomInRange, Vector} from "excalibur";
 import {ResourceLoader, Resources} from "./resources.js";
 // import {Score} from "./score.js";
 // import {Health} from "./health.js";
@@ -13,13 +13,15 @@ export class FatCat extends Actor {
             width: Resources.FatCat.width, height: Resources.FatCat.height
         })
         console.log("I am a cat")
+        this.body.collisionType = CollisionType.Active
         // this.scoreLabel = scoreLabel
         // this.healthLabel = healthLabel
     }
 
     onInitialize(engine) {
         this.graphics.use(Resources.FatCat.toSprite())
-        this.pos = new Vector(500, 500)
+        this.pos = new Vector(150, 550);
+        this.body.mass = 5
         // this.on('collisionstart', (event) => this.hitSomething(event))
         // this.score = 0
         // this.health = 100
@@ -36,8 +38,9 @@ export class FatCat extends Actor {
         if (engine.input.keyboard.isHeld(Keys.D) && this.pos.x < 1180) {
             velX = 200
         }
-        if (engine.input.keyboard.isHeld(Keys.W) && this.pos.y > 50) {
-            velY = -200
+        if (engine.input.keyboard.wasPressed(Keys.W)) {
+            console.log("Jump!");
+            this.body.applyLinearImpulse(new Vector(0, -5000));
         }
         this.vel = new Vector(velX, velY)
     }
