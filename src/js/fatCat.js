@@ -12,16 +12,16 @@ export class FatCat extends Actor {
         super({
             width: Resources.FatCat.width, height: Resources.FatCat.height
         })
-        console.log("I am a cat")
-        this.body.collisionType = CollisionType.Active
+        console.log("I am a cat");
+        this.body.collisionType = CollisionType.Active;
         // this.scoreLabel = scoreLabel
         // this.healthLabel = healthLabel
     }
 
     onInitialize(engine) {
         this.graphics.use(Resources.FatCat.toSprite())
-        this.pos = new Vector(150, 550);
-        this.body.mass = 5
+        this.pos = new Vector(150, 514);
+        this.body.mass = 8
         // this.on('collisionstart', (event) => this.hitSomething(event))
         // this.score = 0
         // this.health = 100
@@ -30,7 +30,7 @@ export class FatCat extends Actor {
 
     onPreUpdate(engine) {
         let velX = 0
-        let velY = 0
+
 
         if (engine.input.keyboard.isHeld(Keys.A) && this.pos.x > 100) {
             velX = -200
@@ -40,8 +40,9 @@ export class FatCat extends Actor {
         }
         if (engine.input.keyboard.wasPressed(Keys.W)) {
             console.log("Jump!");
-            this.body.applyLinearImpulse(new Vector(0, -5000));
+            this.body.applyLinearImpulse(new Vector(0, -3000));
         }
-        this.vel = new Vector(velX, velY)
+
+        this.vel.x = velX;
     }
 }

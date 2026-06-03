@@ -6,15 +6,6 @@ import {BigPlatform} from "./bigPlatform.js";
 
 export class Level extends Scene {
 
-    constructor() {
-        super({
-            physics: {
-                solver: SolverStrategy.Realistic,
-                gravity: new Vector(0, 800)
-            }
-        })
-    }
-
     onInitialize(engine) {
         super.onInitialize(engine);
 
