@@ -21,7 +21,7 @@ export class FatCat extends Actor {
     onInitialize(engine) {
         this.graphics.use(Resources.FatCat.toSprite())
         this.pos = new Vector(150, 514);
-        this.body.mass = 8
+        this.body.mass = 6
         // this.on('collisionstart', (event) => this.hitSomething(event))
         // this.score = 0
         // this.health = 100
