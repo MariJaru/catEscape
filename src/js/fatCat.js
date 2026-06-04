@@ -21,7 +21,7 @@ export class FatCat extends Actor {
     onInitialize(engine) {
         this.graphics.use(Resources.FatCat.toSprite())
         this.pos = new Vector(150, 514);
-        this.body.mass = 6
+        this.body.mass = 7
         // this.on('collisionstart', (event) => this.hitSomething(event))
         // this.score = 0
         // this.health = 100
@@ -32,15 +32,15 @@ export class FatCat extends Actor {
         let velX = 0
 
 
-        if (engine.input.keyboard.isHeld(Keys.A) && this.pos.x > 100) {
+        if (engine.input.keyboard.isHeld(Keys.A) && this.pos.x > 60) {
             velX = -200
         }
-        if (engine.input.keyboard.isHeld(Keys.D) && this.pos.x < 1180) {
+        if (engine.input.keyboard.isHeld(Keys.D) && this.pos.x < 1220) {
             velX = 200
         }
         if (engine.input.keyboard.wasPressed(Keys.W)) {
             console.log("Jump!");
-            this.body.applyLinearImpulse(new Vector(0, -3000));
+            this.body.applyLinearImpulse(new Vector(0, -4200));
         }
 
         this.vel.x = velX;

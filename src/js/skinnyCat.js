@@ -8,20 +8,41 @@ export class SkinnyCat extends Actor {
     // scoreLabel;
     // healthLabel;
 
-    constructor(scoreLabel, healthLabel) {
+    constructor() {
         super({
-            width: Resources.SkinnyCat.width, height: Resources.SkinnyCat.height
+            width: Resources.SkinnyCatSideView.width, height: Resources.SkinnyCatSideView.height
         })
-        console.log("I am a cat");
+        console.log("Meow")
         this.body.collisionType = CollisionType.Active;
         // this.scoreLabel = scoreLabel
         // this.healthLabel = healthLabel
+
+        // animations
+        const idle = Resources.SkinnyCatSideView.toSprite()
+
+        const walk1 = Resources.SkinnyCatWalking1.toSprite()
+        const walk2 = Resources.SkinnyCatWalking2.toSprite()
+
+        const walkAnimation = new Animation({
+            frames: [
+                {graphic: walk1, duration: 300},
+                {graphic: walk2, duration: 300}
+            ]
+        })
+
+        this.graphics.add("idle", idle)
+        this.graphics.add("walk", walkAnimation)
+
+        this.graphics.use("idle")
+
+        // remember last direction
+        this.facingRight = false
     }
 
+
     onInitialize(engine) {
-        this.graphics.use(Resources.SkinnyCat.toSprite())
         this.pos = new Vector(1130, 514);
-        this.body.mass = 5
+        this.body.mass = 6
         // this.on('collisionstart', (event) => this.hitSomething(event))
         // this.score = 0
         // this.health = 100
@@ -31,15 +52,15 @@ export class SkinnyCat extends Actor {
     onPreUpdate(engine) {
         let velX = 0
 
-        if (engine.input.keyboard.isHeld(Keys.Left) && this.pos.x > 100) {
+        if (engine.input.keyboard.isHeld(Keys.Left) && this.pos.x > 60) {
             velX = -250
         }
-        if (engine.input.keyboard.isHeld(Keys.Right) && this.pos.x < 1180) {
+        if (engine.input.keyboard.isHeld(Keys.Right) && this.pos.x < 1220) {
             velX = 250
         }
         if (engine.input.keyboard.wasPressed(Keys.Up)) {
             console.log("Jump!");
-            this.body.applyLinearImpulse(new Vector(0, -3000));
+            this.body.applyLinearImpulse(new Vector(0, -4200));
         }
         this.vel.x = velX;
     }

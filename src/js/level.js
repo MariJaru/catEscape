@@ -12,8 +12,11 @@ export class Level extends Scene {
         const beigeBG = new BeigeBG()
         this.add(beigeBG);
 
-        this.add(new BigPlatform(190, 670));
-        this.add(new BigPlatform(1090, 670));
+        this.add(new BigPlatform(170, 695));
+        this.add(new BigPlatform(1110, 695));
+        this.add(new BigPlatform(640, 695));
+        this.add(new BigPlatform(405, 495));
+        this.add(new BigPlatform(875, 495));
 
         const skinnyCat = new SkinnyCat();
         this.add(skinnyCat);
