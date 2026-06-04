@@ -1,4 +1,4 @@
-import {Actor, CollisionType, Keys, randomInRange, Vector} from "excalibur";
+import {Actor, CollisionType, Keys, randomInRange, Vector, Animation} from "excalibur";
 import {ResourceLoader, Resources} from "./resources.js";
 // import {Score} from "./score.js";
 // import {Health} from "./health.js";
@@ -8,11 +8,11 @@ export class SkinnyCat extends Actor {
     // scoreLabel;
     // healthLabel;
 
-    constructor() {
+    constructor(scoreLabel, healthLabel) {
         super({
             width: Resources.SkinnyCatSideView.width, height: Resources.SkinnyCatSideView.height
         })
-        console.log("Meow")
+        console.log("Meow");
         this.body.collisionType = CollisionType.Active;
         // this.scoreLabel = scoreLabel
         // this.healthLabel = healthLabel
@@ -51,17 +51,34 @@ export class SkinnyCat extends Actor {
 
     onPreUpdate(engine) {
         let velX = 0
+        let isMoving = false
 
         if (engine.input.keyboard.isHeld(Keys.Left) && this.pos.x > 60) {
             velX = -250
+            this.facingRight = false
+            isMoving = true
         }
         if (engine.input.keyboard.isHeld(Keys.Right) && this.pos.x < 1220) {
             velX = 250
+            this.facingRight = true
+            isMoving = true
         }
         if (engine.input.keyboard.wasPressed(Keys.Up)) {
             console.log("Jump!");
             this.body.applyLinearImpulse(new Vector(0, -4200));
         }
         this.vel.x = velX;
+
+        // animation switching
+        if (isMoving) {
+            this.graphics.use("walk")
+            this.graphics.offset = new Vector(0, 7);
+        } else {
+            this.graphics.use("idle")
+            this.graphics.offset = new Vector(0, 0);
+        }
+
+        // flip based on direction
+        this.graphics.flipHorizontal = this.facingRight
     }
 }

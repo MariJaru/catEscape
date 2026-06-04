@@ -1,4 +1,4 @@
-import {Actor, CollisionType, Keys, randomInRange, Vector} from "excalibur";
+import {Actor, CollisionType, Keys, randomInRange, Vector, Animation} from "excalibur";
 import {ResourceLoader, Resources} from "./resources.js";
 // import {Score} from "./score.js";
 // import {Health} from "./health.js";
@@ -10,16 +10,49 @@ export class FatCat extends Actor {
 
     constructor(scoreLabel, healthLabel) {
         super({
-            width: Resources.FatCat.width, height: Resources.FatCat.height
+            width: Resources.FatCatRightSideview.width, height: Resources.FatCatRightSideview.height
         })
-        console.log("I am a cat");
+        console.log("Meow");
         this.body.collisionType = CollisionType.Active;
         // this.scoreLabel = scoreLabel
         // this.healthLabel = healthLabel
+
+        // animations
+        const rightIdle = Resources.FatCatRightSideview.toSprite();
+        const leftIdle = Resources.FatCatLeftSideview.toSprite();
+
+        const leftWalk1 = Resources.FatCatWalkingLeft1.toSprite();
+        const leftWalk2 = Resources.FatCatWalkingLeft2.toSprite();
+
+        const leftWalkAnimation = new Animation({
+            frames: [
+                {graphic: leftWalk1, duration: 300},
+                {graphic: leftWalk2, duration: 300}
+            ]
+        })
+
+        const rightWalk1 = Resources.FatCatWalkingRight1.toSprite()
+        const rightWalk2 = Resources.FatCatWalkingRight2.toSprite()
+
+        const rightWalkAnimation = new Animation({
+            frames: [
+                {graphic: rightWalk1, duration: 300},
+                {graphic: rightWalk2, duration: 300}
+            ]
+        })
+
+        this.graphics.add("rightIdle", rightIdle)
+        this.graphics.add("leftIdle", leftIdle)
+        this.graphics.add("leftWalk", leftWalkAnimation)
+        this.graphics.add("rightWalk", rightWalkAnimation)
+
+        this.graphics.use("rightIdle")
+
+        // remember last direction
+        this.facingRight = false
     }
 
     onInitialize(engine) {
-        this.graphics.use(Resources.FatCat.toSprite())
         this.pos = new Vector(150, 514);
         this.body.mass = 7
         // this.on('collisionstart', (event) => this.hitSomething(event))
@@ -30,13 +63,19 @@ export class FatCat extends Actor {
 
     onPreUpdate(engine) {
         let velX = 0
-
+        let isMoving = false
 
         if (engine.input.keyboard.isHeld(Keys.A) && this.pos.x > 60) {
             velX = -200
+            this.facingRight = false
+            this.graphics.use("leftWalk");
+            isMoving = true
         }
         if (engine.input.keyboard.isHeld(Keys.D) && this.pos.x < 1220) {
             velX = 200
+            this.facingRight = true
+            this.graphics.use("rightWalk");
+            isMoving = true
         }
         if (engine.input.keyboard.wasPressed(Keys.W)) {
             console.log("Jump!");
@@ -44,5 +83,19 @@ export class FatCat extends Actor {
         }
 
         this.vel.x = velX;
+
+        // animation switching
+        if (isMoving) {
+            this.graphics.offset = new Vector(0, 7.5);
+        } else {
+            this.graphics.offset = new Vector(0, 0);
+            if (this.facingRight === true) {
+                this.graphics.use("rightIdle");
+            } else {
+                this.graphics.use("leftIdle");
+            }
+        }
+
+
     }
 }
