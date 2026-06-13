@@ -19,7 +19,15 @@ const Resources = {
 }
 
 
-const ResourceLoader = new Loader()
+const ResourceLoader = new Loader({
+    fullscreenAfterLoad: true,
+    playButtonText: 'Begin!',
+    logo: './images/catEscapeLogo.png',
+    logoWidth: 511,
+    logoHeight: 231,
+    backgroundColor: 'black'
+})
+
 for (let res of Object.values(Resources)) {
     ResourceLoader.addResource(res)
 }

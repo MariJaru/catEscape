@@ -2,7 +2,7 @@ import '../css/style.css'
 import {Actor, Engine, Vector, DisplayMode, SolverStrategy} from "excalibur"
 import {Resources, ResourceLoader} from './resources.js'
 import {Level} from "./level.js";
-import {GameOver} from "./level.js";
+import {GameOver} from "./gameOver.js";
 
 export class Game extends Engine {
 

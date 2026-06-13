@@ -41,6 +41,7 @@ export class SkinnyCat extends Actor {
 
 
     onInitialize(engine) {
+        super.onInitialize(engine);
         this.pos = new Vector(1130, 514);
         this.body.mass = 6
         // this.on('collisionstart', (event) => this.hitSomething(event))
