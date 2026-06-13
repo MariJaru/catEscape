@@ -7,4 +7,8 @@ export class BeigeBG extends Actor {
         this.graphics.use(Resources.BeigeBG.toSprite())
         this.pos = new Vector(400, 300)
     }
+
+    onPostUpdate(engine, delta) {
+        this.pos = engine.currentScene.camera.pos;
+    }
 }

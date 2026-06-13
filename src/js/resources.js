@@ -1,8 +1,10 @@
-import {ImageSource, Sound, Resource, Loader} from 'excalibur'
+import {ImageSource, Sound, Resource, Loader, ImageWrapping} from 'excalibur'
 
 // voeg hier jouw eigen resources toe
 const Resources = {
     BeigeBG: new ImageSource('images/beigeBG.jpg'),
+    RedBG: new ImageSource('images/redBG.jpg'),
+    CatSkull: new ImageSource('images/redBG.jpg'),
     FatCatRightSideview: new ImageSource('images/fatCatRightSideview.png'),
     FatCatWalkingRight1: new ImageSource('images/fatCatWalkingRight1.png'),
     FatCatWalkingRight2: new ImageSource('images/fatCatWalkingRight2.png'),

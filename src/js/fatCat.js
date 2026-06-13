@@ -49,7 +49,7 @@ export class FatCat extends Actor {
         this.graphics.use("rightIdle")
 
         // remember last direction
-        this.facingRight = false
+        this.facingRight = true
     }
 
     onInitialize(engine) {
@@ -65,13 +65,13 @@ export class FatCat extends Actor {
         let velX = 0
         let isMoving = false
 
-        if (engine.input.keyboard.isHeld(Keys.A) && this.pos.x > 60) {
+        if (engine.input.keyboard.isHeld(Keys.A)) {
             velX = -200
             this.facingRight = false
             this.graphics.use("leftWalk");
             isMoving = true
         }
-        if (engine.input.keyboard.isHeld(Keys.D) && this.pos.x < 1220) {
+        if (engine.input.keyboard.isHeld(Keys.D)) {
             velX = 200
             this.facingRight = true
             this.graphics.use("rightWalk");
@@ -96,6 +96,10 @@ export class FatCat extends Actor {
             }
         }
 
+        // check out of bounds
+        if (this.pos.y > 1200) {
+            engine.goToScene('game-over')
+        }
 
     }
 }

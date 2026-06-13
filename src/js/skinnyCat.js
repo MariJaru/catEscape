@@ -53,17 +53,17 @@ export class SkinnyCat extends Actor {
         let velX = 0
         let isMoving = false
 
-        if (engine.input.keyboard.isHeld(Keys.Left) && this.pos.x > 60) {
+        if (engine.input.keyboard.isHeld(Keys.Left)) {
             velX = -250
             this.facingRight = false
             isMoving = true
         }
-        if (engine.input.keyboard.isHeld(Keys.Right) && this.pos.x < 1220) {
+        if (engine.input.keyboard.isHeld(Keys.Right)) {
             velX = 250
             this.facingRight = true
             isMoving = true
         }
-        if (engine.input.keyboard.wasPressed(Keys.Up)) {
+        if (engine.input.keyboard.wasPressed(Keys.Up) && (this.vel.y === 0)) {
             console.log("Jump!");
             this.body.applyLinearImpulse(new Vector(0, -4200));
         }
@@ -80,5 +80,11 @@ export class SkinnyCat extends Actor {
 
         // flip based on direction
         this.graphics.flipHorizontal = this.facingRight
+
+
+        // check out of bounds
+        if (this.pos.y > 1200) {
+            engine.goToScene('game-over')
+        }
     }
 }

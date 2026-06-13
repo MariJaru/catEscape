@@ -18,10 +18,21 @@ export class Level extends Scene {
         this.add(new BigPlatform(405, 495));
         this.add(new BigPlatform(875, 495));
 
-        const skinnyCat = new SkinnyCat();
-        this.add(skinnyCat);
+        this.skinnyCat = new SkinnyCat();
+        this.add(this.skinnyCat);
 
-        const fatCat = new FatCat();
-        this.add(fatCat);
+        this.fatCat = new FatCat();
+        this.add(this.fatCat);
+    }
+
+    onPostUpdate(engine, delta) {
+        // make camera follow the players
+        const camera = engine.currentScene.camera;
+
+        const centerX = (this.skinnyCat.pos.x + this.fatCat.pos.x) / 2;
+        const centerY = (this.skinnyCat.pos.y + this.fatCat.pos.y) / 2;
+
+        camera.pos.x += (centerX - camera.pos.x) * 0.1;
+        camera.pos.y += (centerY - camera.pos.y) * 0.1;
     }
 }
