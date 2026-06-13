@@ -2,7 +2,8 @@ import {Scene, SolverStrategy, Vector} from "excalibur";
 import {BeigeBG} from "./beigeBG.js";
 import {FatCat} from "./fatCat.js";
 import {SkinnyCat} from "./skinnyCat.js";
-import {BigPlatform} from "./bigPlatform.js";
+import {Platform} from "./platform.js";
+import {SmallPlatform} from "./smallPlatform.js";
 
 export class Level extends Scene {
 
@@ -12,11 +13,25 @@ export class Level extends Scene {
         const beigeBG = new BeigeBG()
         this.add(beigeBG);
 
-        this.add(new BigPlatform(170, 695));
-        this.add(new BigPlatform(1110, 695));
-        this.add(new BigPlatform(640, 695));
-        this.add(new BigPlatform(405, 495));
-        this.add(new BigPlatform(875, 495));
+        // platforms
+        let platformPositions = [
+            {"x": 170, "y": 695},
+            {"x": 640, "y": 695},
+            {"x": 1110, "y": 695},
+            {"x": 405, "y": 495},
+            {"x": 875, "y": 495}
+        ]
+        for (let pos of platformPositions) {
+            this.add(new Platform(pos.x, pos.y))
+        }
+
+        // small platforms
+        let smallPlatformPositions = [
+            {"x": 640, "y": 295}
+        ]
+        for (let pos of smallPlatformPositions) {
+            this.add(new SmallPlatform(pos.x, pos.y))
+        }
 
         this.skinnyCat = new SkinnyCat();
         this.add(this.skinnyCat);

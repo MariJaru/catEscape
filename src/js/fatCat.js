@@ -77,7 +77,7 @@ export class FatCat extends Actor {
             this.graphics.use("rightWalk");
             isMoving = true
         }
-        if (engine.input.keyboard.wasPressed(Keys.W)) {
+        if (engine.input.keyboard.wasPressed(Keys.W) && (this.vel.y === 0)) {
             console.log("Jump!");
             this.body.applyLinearImpulse(new Vector(0, -4200));
         }

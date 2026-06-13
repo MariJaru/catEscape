@@ -6,7 +6,8 @@ argument-hint: 'Optional: specify scene types (e.g., "with menu scene" or "with 
 
 # ExcaliburJS Scenes Refactoring
 
-Convert a basic ExcaliburJS project with a single Game class and Player to a scene-based architecture with multiple scenes, each containing their own Player actor.
+Convert a basic ExcaliburJS project with a single Game class and Player to a scene-based architecture with multiple
+scenes, each containing their own Player actor.
 
 ## When to Use
 
@@ -26,9 +27,11 @@ Convert a basic ExcaliburJS project with a single Game class and Player to a sce
 
 ### 1. Understand Scenes
 
-A **Scene** in ExcaliburJS is a container for actors and logic for a specific game state. Multiple scenes can exist, but only one is active at a time.
+A **Scene** in ExcaliburJS is a container for actors and logic for a specific game state. Multiple scenes can exist, but
+only one is active at a time.
 
 Benefits:
+
 - Cleaner code organization
 - Each scene has its own lifecycle (`onInitialize`, `onActivate`, `onDeactivate`)
 - Easy scene transitions
@@ -41,7 +44,7 @@ Create a new file `src/js/scene-level-one.js`:
 ```js
 import { Scene, Vector } from "excalibur"
 import { Player } from "./player.js"
-import { Platform } from "./platform.js"
+import { Platform } from "./smallPlatform.js"
 
 export class SceneLevelOne extends Scene {
     player
@@ -84,7 +87,7 @@ Create `src/js/scene-level-two.js` (similar structure, different platforms):
 ```js
 import { Scene, Vector } from "excalibur"
 import { Player } from "./player.js"
-import { Platform } from "./platform.js"
+import { Platform } from "./smallPlatform.js"
 
 export class SceneLevelTwo extends Scene {
     player
@@ -186,12 +189,14 @@ See [Game class template - with Scenes](./assets/game-with-scenes.js) for comple
 ## Key Concepts
 
 **Scene Lifecycle**:
+
 - `onInitialize(engine)` - Runs once, set up static actors
 - `onActivate(engine)` - Runs when scene becomes active, spawn dynamic actors
 - `onDeactivate(engine)` - Runs when leaving scene, cleanup logic
 - `onPostUpdate(engine)` - Runs every frame, update game state
 
 **Scene Management**:
+
 - `addScene(name, scene)` - Register a scene
 - `goto(sceneName)` - Switch to a different scene
 - Only one scene active at a time
@@ -249,7 +254,8 @@ export class MenuScene extends Scene {
 
 ## Common Issues
 
-**Player not appearing**: Make sure you add the Player in `onActivate()`, not `onInitialize()`. Only actors added in `onActivate()` are visible when the scene starts.
+**Player not appearing**: Make sure you add the Player in `onActivate()`, not `onInitialize()`. Only actors added in
+`onActivate()` are visible when the scene starts.
 
 **Scenes not switching**: Check that scene names in `addScene()` match the names in `goto()` calls.
 

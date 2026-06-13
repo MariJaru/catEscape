@@ -12,17 +12,20 @@ export class GameOver extends Scene {
 
         const catSkull = new Actor()
         catSkull.graphics.use(Resources.CatSkull.toSprite())
-        catSkull.pos = new Vector(640, 300);
+        catSkull.pos = new Vector(
+            engine.screen.resolution.width / 2,
+            engine.screen.resolution.height / 3
+        );
         this.add(catSkull);
 
         // een Label is een Actor die automatisch een Text graphic toevoegt.
         const label = new Label({
-            text: 'GAME OVER\nPress space to restart',
-            pos: new Vector(engine.screen.resolution.width / 2, engine.screen.resolution.height / 3),
+            text: 'GAME OVER\nreload to restart',
+            pos: new Vector(engine.screen.resolution.width / 2, 400),
             font: new Font({
                 unit: FontUnit.Px,
                 family: 'PressStart',
-                size: 20,
+                size: 50,
                 color: Color.White,
                 baseAlign: BaseAlign.Top,
                 textAlign: TextAlign.Center
@@ -31,10 +34,10 @@ export class GameOver extends Scene {
         this.add(label)
     }
 
-    onPreUpdate(engine) {
-        if (engine.input.keyboard.wasPressed(Keys.Space)) {
-            this.goToScene('level')
-        }
-    }
+    // onPreUpdate(engine) {
+    //     if (engine.input.keyboard.wasPressed(Keys.Space)) {
+    //         this.goToScene('level')
+    //     }
+    // }
 
 }

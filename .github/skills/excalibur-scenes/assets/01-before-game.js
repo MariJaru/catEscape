@@ -1,14 +1,14 @@
-import { Actor, Engine, Vector, DisplayMode, SolverStrategy } from "excalibur"
-import { Resources, ResourceLoader } from './resources.js'
-import { Player } from "./player.js"
-import { Platform } from "./platform.js"
+import {Actor, Engine, Vector, DisplayMode, SolverStrategy} from "excalibur"
+import {Resources, ResourceLoader} from './resources.js'
+import {Player} from "./player.js"
+import {Platform} from "./smallPlatform.js"
 
 // BEFORE: Basic Game class with hardcoded player and platforms
 export class GameBefore extends Engine {
     player
 
     constructor() {
-        super({ 
+        super({
             width: 1280,
             height: 720,
             maxFps: 60,

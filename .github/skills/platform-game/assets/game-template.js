@@ -1,12 +1,12 @@
-import { Actor, Engine, Vector, DisplayMode, SolverStrategy } from "excalibur"
-import { Resources, ResourceLoader } from './resources.js'
-import { Player } from "./player.js"
-import { Platform } from "./platform.js"
+import {Actor, Engine, Vector, DisplayMode, SolverStrategy} from "excalibur"
+import {Resources, ResourceLoader} from './resources.js'
+import {Player} from "./player.js"
+import {Platform} from "./smallPlatform.js"
 
 export class Game extends Engine {
 
     constructor() {
-        super({ 
+        super({
             width: 1280,
             height: 720,
             maxFps: 60,
@@ -35,8 +35,8 @@ export class Game extends Engine {
         this.add(platform3)
     }
 
-    onPostUpdate(){
-      
+    onPostUpdate() {
+
     }
 }
 

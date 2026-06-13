@@ -1,6 +1,6 @@
-import { Scene, Vector } from "excalibur"
-import { Player } from "./player.js"
-import { Platform } from "./platform.js"
+import {Scene, Vector} from "excalibur"
+import {Player} from "./player.js"
+import {Platform} from "./smallPlatform.js"
 
 export class SceneLevelOne extends Scene {
     player

@@ -1,6 +1,6 @@
-import { Actor, Vector, CollisionType, Keys } from "excalibur"
-import { Resources } from './resources.js'
-import { Platform } from './platform.js'
+import {Actor, Vector, CollisionType, Keys} from "excalibur"
+import {Resources} from './resources.js'
+import {Platform} from './smallPlatform.js'
 
 export class Player extends Actor {
     jumpForce = 300
@@ -43,11 +43,11 @@ export class Player extends Actor {
     }
 
     // Handle jumping with Space
-  handleJump(engine, delta) {
-    if (engine.input.keyboard.wasPressed(Keys.Space) || engine.input.keyboard.wasPressed(Keys.W)) {
-      this.body.applyLinearImpulse(new Vector(0, -300 * delta))
+    handleJump(engine, delta) {
+        if (engine.input.keyboard.wasPressed(Keys.Space) || engine.input.keyboard.wasPressed(Keys.W)) {
+            this.body.applyLinearImpulse(new Vector(0, -300 * delta))
+        }
     }
-  }
 
     onCollisionStart(event) {
 

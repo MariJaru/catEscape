@@ -6,7 +6,8 @@ argument-hint: 'Optional: specify platform game features (e.g., "with moving pla
 
 # Platform Game with ExcaliburJS
 
-Build a fully functional platform game with a player that can move left/right with WASD keys, jump on platforms, and fall when unsupported.
+Build a fully functional platform game with a player that can move left/right with WASD keys, jump on platforms, and
+fall when unsupported.
 
 ## When to Use
 
@@ -31,7 +32,7 @@ Start with the main Game class and enable **Arcade Physics** with gravity (good 
 import { Actor, Engine, Vector, DisplayMode, SolverStrategy } from "excalibur"
 import { Resources, ResourceLoader } from './resources.js'
 import { Player } from "./player.js"
-import { Platform } from "./platform.js"
+import { Platform } from "./smallPlatform.js"
 
 export class Game extends Engine {
     constructor() {
@@ -143,7 +144,7 @@ See [Player class template](./assets/player-template.js) for full example with c
 
 ### 3. Create Platform Actor
 
-Create `src/js/platform.js` for static platforms:
+Create `src/js/smallPlatform.js` for static platforms:
 
 ```js
 import { Actor, Vector, CollisionType } from "excalibur"
@@ -195,9 +196,11 @@ export { Resources }
 
 ## Key Concepts
 
-**Arcade Physics**: Simpler than realistic physics, good for platformers. Objects fall with gravity and collide with fixed platforms.
+**Arcade Physics**: Simpler than realistic physics, good for platformers. Objects fall with gravity and collide with
+fixed platforms.
 
 **CollisionType**:
+
 - `Active`: Actors that move and respond to physics (Player)
 - `Fixed`: Static immovable objects (Platforms)
 
@@ -208,7 +211,7 @@ export { Resources }
 ## Common Tweaks
 
 - **Jump height**: Increase impulse value in `handleJump()` for higher jumps
-- **Movement speed**: Change `xspeed` value in `handleMovement()` 
+- **Movement speed**: Change `xspeed` value in `handleMovement()`
 - **Gravity**: Adjust `gravity` in Game class constructor (higher = faster fall)
 - **Platform size**: Pass different `width` and `height` to Platform constructor
 

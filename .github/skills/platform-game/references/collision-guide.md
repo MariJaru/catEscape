@@ -5,6 +5,7 @@
 ExcaliburJS fires collision events automatically when actors collide.
 
 ### onCollisionStart()
+
 Fired when two actors begin colliding (first frame of contact).
 
 ```js
@@ -14,6 +15,7 @@ onCollisionStart(event) {
 ```
 
 ### onCollisionEnd()
+
 Fired when two actors stop colliding (last frame of contact).
 
 ```js
@@ -22,16 +24,16 @@ onCollisionEnd(event) {
 }
 ```
 
-
 ## Type Checking with instanceof
 
 Identify which actor you collided with:
 
 ```js
-import { Platform } from './platform.js'
-import { Enemy } from './enemy.js'
+import {Platform} from './smallPlatform.js'
+import {Enemy} from './enemy.js'
 
-onCollisionStart(event) {
+onCollisionStart(event)
+{
     if (event.other.owner instanceof Platform) {
         console.log("Hit a platform")
     } else if (event.other.owner instanceof Enemy) {
@@ -64,6 +66,7 @@ game.showDebug(true)
 ```
 
 This will draw:
+
 - Red outlines: Collision boxes
 - Green lines: Contact normals
 - Yellow dots: Contact points
