@@ -13,6 +13,7 @@ export class SkinnyCat extends Actor {
             width: Resources.SkinnyCatSideView.width, height: Resources.SkinnyCatSideView.height
         })
         console.log("Meow");
+        this.name = "skinnyCat";
         this.body.collisionType = CollisionType.Active;
         // this.scoreLabel = scoreLabel
         // this.healthLabel = healthLabel

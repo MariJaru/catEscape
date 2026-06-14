@@ -1,10 +1,10 @@
 import {ImageSource, Sound, Resource, Loader, ImageWrapping} from 'excalibur'
-import {SmallPlatform} from "./smallPlatform.js";
 
 // voeg hier jouw eigen resources toe
 const Resources = {
     BeigeBG: new ImageSource('images/beigeBG.jpg'),
     RedBG: new ImageSource('images/redBG.jpg'),
+    ConfettiBG: new ImageSource('images/confettiBG.jpg'),
     CatSkull: new ImageSource('images/catSkull.png'),
     FatCatRightSideview: new ImageSource('images/fatCatRightSideview.png'),
     FatCatWalkingRight1: new ImageSource('images/fatCatWalkingRight1.png'),

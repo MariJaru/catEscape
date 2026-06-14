@@ -12,6 +12,7 @@ export class Level2 extends Scene {
 
     onInitialize(engine) {
         super.onInitialize(engine);
+        this.engine = engine;
 
         const beigeBG = new BeigeBG()
         this.add(beigeBG);

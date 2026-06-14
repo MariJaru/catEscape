@@ -1,15 +1,20 @@
 import {Scene} from "excalibur";
 import {BeigeBG} from "./beigeBG.js";
 import {Platform} from "./platform.js";
-import {Crate} from "./crate.js";
 import {BigPlatform} from "./bigPlatform.js";
 import {SkinnyCat} from "./skinnyCat.js";
 import {FatCat} from "./fatCat.js";
+import {GreenDoor} from "./greenDoor.js";
+import {BlueDoor} from "./blueDoor.js";
 
 export class Level1 extends Scene {
 
     onInitialize(engine) {
         super.onInitialize(engine);
+        this.engine = engine;
+
+        this.skinnyDone = false;
+        this.fatDone = false;
 
         const beigeBG = new BeigeBG()
         this.add(beigeBG);
@@ -25,11 +30,21 @@ export class Level1 extends Scene {
 
         this.add(new BigPlatform(640, 695));
 
+        this.add(new GreenDoor(522, 590));
+        this.add(new BlueDoor(758, 590));
+
         this.skinnyCat = new SkinnyCat();
         this.add(this.skinnyCat);
 
         this.fatCat = new FatCat();
         this.add(this.fatCat);
+    }
+
+    checkWinCondition() {
+        if (this.skinnyDone && this.fatDone) {
+            console.log("Level complete!");
+            this.engine.goToScene("level2");
+        }
     }
 
     onPostUpdate(engine, delta) {
@@ -42,4 +57,5 @@ export class Level1 extends Scene {
         camera.pos.x += (centerX - camera.pos.x) * 0.1;
         camera.pos.y += (centerY - camera.pos.y) * 0.1;
     }
+
 }

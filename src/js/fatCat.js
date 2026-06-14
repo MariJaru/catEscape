@@ -13,6 +13,7 @@ export class FatCat extends Actor {
             width: Resources.FatCatRightSideview.width, height: Resources.FatCatRightSideview.height
         })
         console.log("Meow");
+        this.name = "fatCat";
         this.body.collisionType = CollisionType.Active;
         // this.scoreLabel = scoreLabel
         // this.healthLabel = healthLabel
