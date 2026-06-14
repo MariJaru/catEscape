@@ -7,6 +7,12 @@ import {SmallPlatform} from "./smallPlatform.js";
 import {BigPlatform} from "./bigPlatform.js";
 import {Crate} from "./crate.js";
 import {PressurePlate} from "./pressurePlate.js";
+import {GreenDoor} from "./greenDoor.js";
+import {BlueDoor} from "./blueDoor.js";
+import {Thorns} from "./thorns.js";
+import {Lives} from "./lives.js";
+import {Score} from "./score.js";
+import {Fish} from "./fish.js";
 
 export class Level2 extends Scene {
 
@@ -14,7 +20,10 @@ export class Level2 extends Scene {
         super.onInitialize(engine);
         this.engine = engine;
 
-        const beigeBG = new BeigeBG()
+        this.skinnyDone = false;
+        this.fatDone = false;
+
+        const beigeBG = new BeigeBG();
         this.add(beigeBG);
 
         // small platforms
@@ -33,7 +42,9 @@ export class Level2 extends Scene {
             {"x": 640, "y": 695},
             {"x": 1110, "y": 695},
             {"x": 405, "y": 495},
-            {"x": 875, "y": 495}
+            {"x": 875, "y": 495},
+            {"x": 875, "y": 995},
+            {"x": 405, "y": 995}
         ]
         for (let pos of platformPositions) {
             this.add(new Platform(pos.x, pos.y))
@@ -50,13 +61,62 @@ export class Level2 extends Scene {
 
         this.add(new Crate(325, 15));
 
-        this.add(new PressurePlate(0, 95));
+        this.add(new PressurePlate(0, 94));
 
-        this.skinnyCat = new SkinnyCat();
+        this.add(new GreenDoor(875, 890));
+        this.add(new BlueDoor(405, 890));
+
+        let thornPositions = [
+            {"x": 875, "y": 875},
+            {"x": 405, "y": 875}
+        ]
+
+        for (let pos of thornPositions) {
+            this.add(new Thorns(pos.x, pos.y))
+        }
+
+        let fishPositions = [
+            {"x": 640, "y": 645},
+            {"x": 405, "y": 445},
+            {"x": 875, "y": 445},
+            {"x": 325, "y": 45},
+            {"x": 955, "y": 45},
+            {"x": 640, "y": 245},
+            {"x": 640, "y": -195}
+        ]
+
+        for (let pos of fishPositions) {
+            this.add(new Fish(pos.x, pos.y))
+        }
+
+        const livesLabel = new Lives();
+        this.add(livesLabel);
+
+        const scoreLabel = new Score();
+        this.add(scoreLabel);
+
+        this.skinnyCat = new SkinnyCat(livesLabel, scoreLabel);
         this.add(this.skinnyCat);
+        livesLabel.setSkinnyCat(this.skinnyCat);
 
-        this.fatCat = new FatCat();
+        this.fatCat = new FatCat(livesLabel, scoreLabel);
         this.add(this.fatCat);
+        livesLabel.setFatCat(this.fatCat);
+    }
+
+    checkWinCondition() {
+        if (this.skinnyDone && this.fatDone) {
+            console.log("Level complete!");
+            this.engine.goToScene("game-completed");
+        }
+    }
+
+    removeThorns() {
+        for (const actor of this.actors) {
+            if (actor instanceof Thorns) {
+                actor.kill();
+            }
+        }
     }
 
     onPostUpdate(engine, delta) {

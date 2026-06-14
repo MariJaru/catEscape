@@ -15,8 +15,7 @@ export class PressurePlate extends Actor {
             const actor = event.other.owner;
 
             if (actor instanceof Crate) {
-                // kill the electric fence
-                event.other.owner.kill()
+                this.scene.removeThorns();
             }
         });
     }

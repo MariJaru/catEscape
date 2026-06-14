@@ -1,22 +1,22 @@
 import {Actor, CollisionType, Keys, randomInRange, Vector, Animation} from "excalibur";
 import {ResourceLoader, Resources} from "./resources.js";
-// import {Score} from "./score.js";
-// import {Health} from "./health.js";
-
+import {Score} from "./score.js";
+import {Lives} from "./lives.js";
+import {Fish} from "./fish.js";
 
 export class FatCat extends Actor {
-    // scoreLabel;
-    // healthLabel;
+    livesLabel;
+    scoreLabel;
 
-    constructor(scoreLabel, healthLabel) {
+    constructor(livesLabel, scoreLabel) {
         super({
             width: Resources.FatCatRightSideview.width, height: Resources.FatCatRightSideview.height
         })
         console.log("Meow");
-        this.name = "fatCat";
         this.body.collisionType = CollisionType.Active;
-        // this.scoreLabel = scoreLabel
-        // this.healthLabel = healthLabel
+        this.livesLabel = livesLabel
+        this.scoreLabel = scoreLabel
+
 
         // animations
         const rightIdle = Resources.FatCatRightSideview.toSprite();
@@ -56,10 +56,17 @@ export class FatCat extends Actor {
     onInitialize(engine) {
         this.pos = new Vector(150, 514);
         this.body.mass = 7
-        // this.on('collisionstart', (event) => this.hitSomething(event))
-        // this.score = 0
-        // this.health = 100
-        // this.on(...)
+        this.on('collisionstart', (event) => this.hitSomething(event))
+        this.score = 0
+        this.lives = 3
+    }
+
+    hitSomething(event) {
+        if (event.other.owner instanceof Fish) {
+            console.log("nom nom")
+            event.other.owner.kill()
+            this.scoreLabel.incScore();
+        }
     }
 
     onPreUpdate(engine) {

@@ -1,4 +1,4 @@
-import {Engine, TextAlign, BaseAlign, Actor, Label, Keys, FontUnit, Vector, Color, Scene, Font} from 'excalibur'
+import {Engine, TextAlign, BaseAlign, Actor, Label, FontUnit, Vector, Color, Scene, Font} from 'excalibur'
 import {Resources} from './resources.js'
 
 export class GameCompleted extends Scene {
