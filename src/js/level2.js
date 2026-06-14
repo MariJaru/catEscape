@@ -82,7 +82,7 @@ export class Level2 extends Scene {
             {"x": 325, "y": 45},
             {"x": 955, "y": 45},
             {"x": 640, "y": 245},
-            {"x": 640, "y": -195}
+            {"x": 640, "y": -205}
         ]
 
         for (let pos of fishPositions) {

@@ -1,7 +1,6 @@
 import {Actor, CollisionType, Keys, Vector} from "excalibur"
 import {Resources} from './resources.js'
 import {FatCat} from './fatCat.js';
-import {SkinnyCat} from "./skinnyCat.js";
 
 export class Crate extends Actor {
     constructor(x, y) {
