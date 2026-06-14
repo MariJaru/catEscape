@@ -4,6 +4,8 @@ import {FatCat} from "./fatCat.js";
 import {SkinnyCat} from "./skinnyCat.js";
 import {Platform} from "./platform.js";
 import {SmallPlatform} from "./smallPlatform.js";
+import {BigPlatform} from "./bigPlatform.js";
+import {Crate} from "./crate.js";
 
 export class Level extends Scene {
 
@@ -12,6 +14,16 @@ export class Level extends Scene {
 
         const beigeBG = new BeigeBG()
         this.add(beigeBG);
+
+        // small platforms
+        let smallPlatformPositions = [
+            {"x": 640, "y": 295},
+            // only orange cat can jump here (without help)
+            {"x": 640, "y": -155}
+        ]
+        for (let pos of smallPlatformPositions) {
+            this.add(new SmallPlatform(pos.x, pos.y))
+        }
 
         // platforms
         let platformPositions = [
@@ -25,13 +37,16 @@ export class Level extends Scene {
             this.add(new Platform(pos.x, pos.y))
         }
 
-        // small platforms
-        let smallPlatformPositions = [
-            {"x": 640, "y": 295}
+        // big platforms
+        let bigPlatformPositions = [
+            {"x": 325, "y": 95},
+            {"x": 955, "y": 95}
         ]
-        for (let pos of smallPlatformPositions) {
-            this.add(new SmallPlatform(pos.x, pos.y))
+        for (let pos of bigPlatformPositions) {
+            this.add(new BigPlatform(pos.x, pos.y))
         }
+
+        this.add(new Crate(325, 15));
 
         this.skinnyCat = new SkinnyCat();
         this.add(this.skinnyCat);

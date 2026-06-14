@@ -16,7 +16,10 @@ const Resources = {
     SkinnyCatWalking1: new ImageSource('images/skinnyCatWalking1.png'),
     SkinnyCatWalking2: new ImageSource('images/skinnyCatWalking2.png'),
     SmallPlatform: new ImageSource('images/smallWoodenPlatform.png'),
-    Platform: new ImageSource('images/woodenPlatform.png')
+    Platform: new ImageSource('images/woodenPlatform.png'),
+    BigPlatform: new ImageSource('images/bigWoodenPlatform.png'),
+    Crate: new ImageSource('images/crate.png'),
+    PressurePlate: new ImageSource('images/pressurePlate.png')
 }
 
 
