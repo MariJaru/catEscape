@@ -1,8 +1,9 @@
 import '../css/style.css'
 import {Actor, Engine, Vector, DisplayMode, SolverStrategy} from "excalibur"
 import {Resources, ResourceLoader} from './resources.js'
-import {Level} from "./level.js";
+import {Level2} from "./level2.js";
 import {GameOver} from "./gameOver.js";
+import {Level1} from "./level1.js";
 
 export class Game extends Engine {
 
@@ -26,10 +27,12 @@ export class Game extends Engine {
     startGame() {
         console.log("start de game!")
 
-        const level = new Level();
-        this.add('level', level);
+        const level1 = new Level1();
+        this.add('level1', level1);
+        const level2 = new Level2();
+        this.add('level2', level2);
         this.add('game-over', new GameOver())
-        this.goToScene('level')
+        this.goToScene('level1')
     }
 
 }

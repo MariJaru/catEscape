@@ -11,7 +11,7 @@ scenes, each containing their own Player actor.
 
 ## When to Use
 
-- Organizing multi-level or multi-stage games (Level 1, Level 2, Boss Level)
+- Organizing multi-level or multi-stage games (Level2 1, Level2 2, Boss Level2)
 - Implementing different game modes (Menu, Play, Game Over, Settings)
 - Separating concerns: each scene manages its own actors and logic
 - Creating transitions between game states
@@ -42,13 +42,13 @@ Benefits:
 Create a new file `src/js/scene-level-one.js`:
 
 ```js
-import { Scene, Vector } from "excalibur"
-import { Player } from "./player.js"
-import { Platform } from "./smallPlatform.js"
+import {Scene, Vector} from "excalibur"
+import {Player} from "./player.js"
+import {Platform} from "./smallPlatform.js"
 
 export class SceneLevelOne extends Scene {
     player
-    
+
     onInitialize(engine) {
         // This runs once when scene is created
         this.add(new Platform(200, 600, 220, 50))
@@ -60,12 +60,12 @@ export class SceneLevelOne extends Scene {
         // This runs when scene becomes active
         this.player = new Player()
         this.add(this.player)
-        console.log("Level 1 started!")
+        console.log("Level2 1 started!")
     }
 
     onDeactivate(engine) {
         // This runs when switching away from this scene
-        console.log("Level 1 ended!")
+        console.log("Level2 1 ended!")
     }
 
     onPostUpdate(engine) {
@@ -78,16 +78,16 @@ export class SceneLevelOne extends Scene {
 }
 ```
 
-See [Scene template - Level One](./assets/scene-level-one.js) for complete example.
+See [Scene template - Level2 One](./assets/scene-level-one.js) for complete example.
 
 ### 3. Create Your Second Scene
 
 Create `src/js/scene-level-two.js` (similar structure, different platforms):
 
 ```js
-import { Scene, Vector } from "excalibur"
-import { Player } from "./player.js"
-import { Platform } from "./smallPlatform.js"
+import {Scene, Vector} from "excalibur"
+import {Player} from "./player.js"
+import {Platform} from "./smallPlatform.js"
 
 export class SceneLevelTwo extends Scene {
     player
@@ -104,11 +104,11 @@ export class SceneLevelTwo extends Scene {
     onActivate(engine) {
         this.player = new Player()
         this.add(this.player)
-        console.log("Level 2 started!")
+        console.log("Level2 2 started!")
     }
 
     onDeactivate(engine) {
-        console.log("Level 2 ended!")
+        console.log("Level2 2 ended!")
     }
 
     onPostUpdate(engine) {
@@ -120,21 +120,21 @@ export class SceneLevelTwo extends Scene {
 }
 ```
 
-See [Scene template - Level Two](./assets/scene-level-two.js) for complete example.
+See [Scene template - Level2 Two](./assets/scene-level-two.js) for complete example.
 
 ### 4. Refactor Game Class to Use Scenes
 
 Update your `src/js/game.js`:
 
 ```js
-import { Actor, Engine, Vector, DisplayMode, SolverStrategy } from "excalibur"
-import { Resources, ResourceLoader } from './resources.js'
-import { SceneLevelOne } from "./scene-level-one.js"
-import { SceneLevelTwo } from "./scene-level-two.js"
+import {Actor, Engine, Vector, DisplayMode, SolverStrategy} from "excalibur"
+import {Resources, ResourceLoader} from './resources.js'
+import {SceneLevelOne} from "./scene-level-one.js"
+import {SceneLevelTwo} from "./scene-level-two.js"
 
 export class Game extends Engine {
     constructor() {
-        super({ 
+        super({
             width: 1280,
             height: 720,
             maxFps: 60,
@@ -181,9 +181,9 @@ See [Game class template - with Scenes](./assets/game-with-scenes.js) for comple
 ### 5. Test Scene Transitions
 
 - Run your game: `npm run dev`
-- Start in Level 1
-- Press **N** to go to Level 2
-- Press **P** to go back to Level 1
+- Start in Level2 1
+- Press **N** to go to Level2 2
+- Press **P** to go back to Level2 1
 - Each scene should have its own Player and platforms
 
 ## Key Concepts
@@ -203,13 +203,14 @@ See [Game class template - with Scenes](./assets/game-with-scenes.js) for comple
 
 ## Common Patterns
 
-### Adding a Level Complete Condition
+### Adding a Level2 Complete Condition
 
 ```js
-onPostUpdate(engine) {
+onPostUpdate(engine)
+{
     // Check if player reached goal
     if (this.player.pos.x > 1200) {
-        console.log("Level complete!")
+        console.log("Level2 complete!")
         // Switch to next scene
         engine.goToScene("level2")
     }

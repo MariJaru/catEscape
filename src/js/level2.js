@@ -6,8 +6,9 @@ import {Platform} from "./platform.js";
 import {SmallPlatform} from "./smallPlatform.js";
 import {BigPlatform} from "./bigPlatform.js";
 import {Crate} from "./crate.js";
+import {PressurePlate} from "./pressurePlate.js";
 
-export class Level extends Scene {
+export class Level2 extends Scene {
 
     onInitialize(engine) {
         super.onInitialize(engine);
@@ -47,6 +48,8 @@ export class Level extends Scene {
         }
 
         this.add(new Crate(325, 15));
+
+        this.add(new PressurePlate(0, 95));
 
         this.skinnyCat = new SkinnyCat();
         this.add(this.skinnyCat);

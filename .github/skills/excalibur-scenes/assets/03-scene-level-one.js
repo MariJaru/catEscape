@@ -17,12 +17,12 @@ export class SceneLevelOne extends Scene {
         // Create and add player when scene becomes active
         this.player = new Player()
         this.add(this.player)
-        console.log("Level 1 activated!")
+        console.log("Level2 1 activated!")
     }
 
     onDeactivate(engine) {
         // Clean up when leaving this scene
-        console.log("Level 1 deactivated!")
+        console.log("Level2 1 deactivated!")
     }
 
     onPostUpdate(engine) {

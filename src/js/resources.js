@@ -15,11 +15,22 @@ const Resources = {
     SkinnyCatSideView: new ImageSource('images/skinnyCatSideview.png'),
     SkinnyCatWalking1: new ImageSource('images/skinnyCatWalking1.png'),
     SkinnyCatWalking2: new ImageSource('images/skinnyCatWalking2.png'),
+    Sneaking1: new ImageSource('images/sneaking1.png'),
+    Sneaking2: new ImageSource('images/sneaking2.png'),
+    Vent: new ImageSource('images/vent.png'),
+    VentOutline: new ImageSource('images/ventOutline.png'),
+    InsideVent: new ImageSource('images/insideVent.png'),
+    Button: new ImageSource('images/button.png'),
+    Key: new ImageSource('images/key.png'),
     SmallPlatform: new ImageSource('images/smallWoodenPlatform.png'),
     Platform: new ImageSource('images/woodenPlatform.png'),
     BigPlatform: new ImageSource('images/bigWoodenPlatform.png'),
     Crate: new ImageSource('images/crate.png'),
-    PressurePlate: new ImageSource('images/pressurePlate.png')
+    PressurePlate: new ImageSource('images/pressurePlate.png'),
+    GreenDoor: new ImageSource('images/greenDoor.png'),
+    LockedGreenDoor: new ImageSource('images/lockedGreenDoor.png'),
+    BlueDoor: new ImageSource('images/blueDoor.png'),
+    LockedBlueDoor: new ImageSource('images/lockedBlueDoor.png')
 }
 
 
