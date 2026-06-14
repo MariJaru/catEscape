@@ -32,11 +32,4 @@ export class GameOver extends Scene {
         })
         this.add(label)
     }
-
-    // onPreUpdate(engine) {
-    //     if (engine.input.keyboard.wasPressed(Keys.Space)) {
-    //         this.goToScene('level')
-    //     }
-    // }
-
 }
